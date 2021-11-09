@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="./script.js" defer></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container" style="max-width: 800px;">
+    <article>
+      <h1 class="mb-5">Что такое сеть?</h1>
+
+      <section>
+        <details>
+          <summary><strong>1. Чтобы соединить 2 компьютера в сеть необходимы:</strong></summary>
+
+          <ul>
+            <li>Ethernet кабель</li>
+            <li>WiFi</li>
+            <li>Bluetooth</li>
+          </ul>
+          <p>Рассмотрим простейший способ с использованием Ethernet кабеля</p>
+          <figure>
+            <img src="https://mdn.mozillademos.org/files/8441/internet-schema-1.png" alt="">
+          </figure>
+        </details>
+      </section>
+
+      <section>
+        <details>
+          <summary><strong>2. С каждым подключаемым компьютером сеть усложняется:</strong></summary>
+
+
+          <figure>
+            <img src="https://mdn.mozillademos.org/files/8443/internet-schema-2.png" alt="">
+          </figure>
+          <p>Для решения этой проблемы каждый компьютер сети подключается к одному компьютеру, который называется маршрутизатор.</p>
+
+          <p>Сеть упрощается:</p>
+          <figure>
+            <img src="https://mdn.mozillademos.org/files/8445/internet-schema-3.png" alt="">
+          </figure>
+        </details>
+      </section>
+
+      <section>
+        <details>
+          <summary><strong>3. Сеть сетей</strong></summary>
+          <p>Для объединения сотни,тысячи или миллионов компьютеров один маршрутизатор не справится с этой задачей.</p>
+          <p>Так как маршрутизатор - это специальный компьютер, то их тоже можно соединить.</p>
+          <figure>
+            <img src="https://mdn.mozillademos.org/files/8447/internet-schema-4.png" alt="">
+          </figure>
+          <figure>
+            <img src="https://mdn.mozillademos.org/files/8447/internet-schema-4.png" alt="">
+          </figure>
+        </details>
+      </section>
+
+      <section>
+        <details>
+          <summary><strong>4. Модем</strong></summary>
+
+          <p>Такая сеть уже похожа на то, что мы называем интернетом, но мы не можем протянуть кабели по всему миру.</p>
+          <p>Мы можем воспользоваться уже готовой сетью, которая соединяет разные уголки мира. Эта сеть - телефонная.</p>
+          <p>Для подключения компьютерной сети к глобальной телефонной необходимо оборудование, которое перекодирует информацию, поступающую из нашей сети в формат, который можно передавать через телефонную сеть, и, наоборот, декодируют информацию из телефонной сети в формат, который распознают наши компьютеры. Для этого нужен модем.</p>
+          <figure>
+            <img src="https://mdn.mozillademos.org/files/8451/internet-schema-6.png" alt="">
+          </figure>
+        </details>
+      </section>
+
+      <section>
+        <details>
+          <summary><strong>5. ISP (Internet Service Provider)</strong></summary>
+
+          <p>ISP - компания, которая обслуживает специальные маршрутизаторы, которые не только подключены друг к другу (объединяют в единую сеть всех клиентов провайдера), но также связаны с маршрутизаторами других провайдеров. Таким образом, наше сообщение, пройдя транзитом через сеть нескольких провайдеров, достигнет сеть назначения.</p>
+
+          <figure>
+            <img src="https://mdn.mozillademos.org/files/8453/internet-schema-7.png" alt="">
+          </figure>
+
+          <h2><strong> Интернет — это сеть сетей, которая объединяет в себе всю вышеперечисленную инфраструктуру.</strong></h2>
+        </details>
+      </section>
+
+      <section>
+        <details>
+          <summary><strong>6. Поиск компьютера в сети происходит по IP (Internet Protocol)</strong></summary>
+
+          <p>Пример интернет протокола версии 4 (IPv4) 192.168.2.10 или IPv6 2027:0da8:8b73:0000:0000:8a2e:0370:1337</p>
+          <p>Человеку сложно использовать IP, для него существуют домены, например: <strong>google.com</strong> </p>
+          <p>0.0.0.0 - 255.255.255.255</p>
+        </details>
+      </section>
+    </article>
+  </div>
+
+  <div class="container d-flex flex-wrap" id="container">
+
+  </div>
+</body>
+</html>

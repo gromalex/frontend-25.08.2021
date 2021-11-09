@@ -1,0 +1,14 @@
+body {
+  background-color: rgb(243, 243, 243);
+}
+
+section {
+  padding: 2rem;
+  border-radius: 0.75rem;
+
+  background-color: white;
+}
+
+section + section {
+  margin-top: 3rem;
+}
