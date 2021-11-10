@@ -2,8 +2,6 @@ let data = []
 let isEdit = false
 let currentEditedToDo = {}
 const formCreateElement = document.querySelector('#formCreate')
-const formEditElement = document.querySelector('#formEdit')
-const formEditContainerElement = document.querySelector('#formEditContainer')
 const listElement = document.querySelector('#list')
 
 function handleSubmit (event) {
@@ -11,7 +9,7 @@ function handleSubmit (event) {
 
   const toDo = {
     id: new Date().getTime(),
-    isChecked: false
+    isChecked: false,
   }
 
   const formData = new FormData(formCreateElement)
@@ -29,17 +27,15 @@ function handleChange (event) {
   const { target } = event
   const { id, checked, type } = target
 
-  if (type !== 'checkbox') return
+  if (type == 'checkbox') {
+    data.forEach((item) => {
+      if (item.id == id) {
+        item.isChecked = checked
+      }
+    })
 
-  console.log(target.dataset)
-
-  data.forEach((item) => {
-    if (item.id == id) {
-      item.isChecked = checked
-    }
-  })
-
-  render()
+    render()
+  }
 }
 
 function handleBeforeUnload () {
@@ -82,7 +78,7 @@ function handleClickEditButton (event) {
   const { role, id } = target.dataset
 
   if (role == 'edit') {
-    if (isEdit == true) {
+    if (isEdit) {
       alert('Уже редактируется')
       return
     }
@@ -125,8 +121,6 @@ function handleFormEditSubmit (event) {
   }
 }
 
-
-
 // -------------------------------------------------------------------------------------------------
 
 function createToDoTemplate ({id, content, isChecked}) {
@@ -152,12 +146,12 @@ function createToDoTemplate ({id, content, isChecked}) {
   return template
 }
 
-function formEditTemplate ({ content }) {
+function formEditTemplate ({ content }) { // toDo
   const template = `
     <div class="island__item" id="formEditContainer">
       <form class="d-flex" data-role="editForm">
         <div class="flex-grow-1">
-          <input type="text" class="form-control form-control-sm" name="content" placeholder="Введите задачу" required value="${content}">
+          <input type="text" class="form-control form-control-sm" name="content" placeholder="Введите задачу" required value="${content}"> // toDo.content
         </div>
         <div class="ms-3">
           <button type="submit" class="btn btn-sm btn-primary">

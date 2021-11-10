@@ -43,9 +43,37 @@ function fetchData (url, method, callback) {
   xhr.send()
 }
 
+const containerElement = document.querySelector('#container')
+
+containerElement.addEventListener('click', (event) => {
+  event.preventDefault()
+
+  const { target } = event
+
+  // Способ через closest, сработает при клике на всю карточку
+  // const linkElement = target.closest('a')
+
+  // if (linkElement) {
+  //  TODO:
+  // }
+
+  // Способ через кнопку, сработает только при клике на кнопку внутри карточки
+  if (target.tagName == 'BUTTON') {
+    const { id } = target.dataset
+    console.log(target.dataset.id)
+
+    const url = `https://jsonplaceholder.typicode.com/posts/${id}/comments`
+
+    fetchData(url, 'GET', (response) => {
+      console.log(response)
+      // TODO:
+    })
+  }
+})
+
+
 fetchData('https://jsonplaceholder.typicode.com/posts', 'GET', (response) => {
   const data = JSON.parse(response)
-  const containerElement = document.querySelector('#container')
 
   const cards = data.map((item) => {
     return cardTemplate(item.title, item.body, item.id)
@@ -58,11 +86,12 @@ fetchData('https://jsonplaceholder.typicode.com/posts', 'GET', (response) => {
 
 function cardTemplate (title, text, id) {
   return `
-    <div class="card" style="width: 25%" data-id="${id}">
+    <a href="#" role="button" class="card" style="width: 25%" data-id="${id}">
       <div class="card-body">
         <h5 class="card-title">${title}</h5>
-        <p class="card-text">${text}</p>
+        <p class="card-text mb-4">${text}</p>
+        <button class="btn btn-primary" type="button" data-id="${id}">Comments</button>
       </div>
-    </div>
+    </a>
   `
 }
