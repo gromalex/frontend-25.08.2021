@@ -83,6 +83,5 @@ fetchData(urlWetherCurrent, 'GET', (response) => {
   render({ city, countryCode, date, temp, windDeg, windSpeed, description, iconSrc })
 })
 
-
 // Часть 2
 // Погода по дням, всего 40 объектов, вам надо взять каждый 8-й, т.е [8, 16, 24, 32, 40]
