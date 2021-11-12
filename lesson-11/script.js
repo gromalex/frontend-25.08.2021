@@ -23,8 +23,6 @@ const key = '1354067d4c5e5ba7d6625f68d153937b'
 const urlWetherCurrent = `https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=${key}`
 const urlWetherByDays = `https://api.openweathermap.org/data/2.5/forecast?q=Minsk&appid=${key}`
 
-
-
 function widgetTemplate (weatherData) {
   const { city, countryCode, date, temp, windDeg, windSpeed, description, iconSrc } = weatherData
   const resultTemp = Math.round(temp) > 0 ? '+' + Math.round(temp) : Math.round(temp)
