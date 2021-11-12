@@ -27,7 +27,8 @@ function widgetTemplate (weatherData) {
   const { city, countryCode, date, temp, windDeg, windSpeed, description, iconSrc } = weatherData
   const resultTemp = Math.round(temp) > 0 ? '+' + Math.round(temp) : Math.round(temp)
 
-  const widgetItems = buildWidgetItems()
+  // TODO: buildWidgetItems
+  // const widgetItems = buildWidgetItems()
 
   return `
     <div class="widget">
@@ -54,7 +55,6 @@ function widgetTemplate (weatherData) {
       </div>
 
       <div class="widget-body">
-        ${widgetItems}
       </div>
     </div>
   `
@@ -66,8 +66,6 @@ function render (data) {
 
 fetchData(urlWetherCurrent, 'GET', (response) => {
   const data = JSON.parse(response)
-
-  console.log(data)
 
   const city = data.name
   const windDeg = data.wind.deg
