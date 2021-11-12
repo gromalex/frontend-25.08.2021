@@ -43,32 +43,55 @@ function fetchData (url, method, callback) {
   xhr.send()
 }
 
-const containerElement = document.querySelector('#container')
+const containerPostsElement = document.querySelector('#posts')
+const containerCommentsElement = document.querySelector('#comments')
 
-containerElement.addEventListener('click', (event) => {
+containerPostsElement.addEventListener('click', (event) => {
   event.preventDefault()
 
   const { target } = event
 
   // Способ через closest, сработает при клике на всю карточку
-  // const linkElement = target.closest('a')
+  const linkElement = target.closest('a')
 
-  // if (linkElement) {
-  //  TODO:
-  // }
-
-  // Способ через кнопку, сработает только при клике на кнопку внутри карточки
-  if (target.tagName == 'BUTTON') {
-    const { id } = target.dataset
-    console.log(target.dataset.id)
+  if (linkElement) {
+    const { id } = linkElement.dataset
 
     const url = `https://jsonplaceholder.typicode.com/posts/${id}/comments`
 
     fetchData(url, 'GET', (response) => {
-      console.log(response)
-      // TODO:
+      const data = JSON.parse(response)
+
+      const comments = data.map((item) => {
+        // const { name, email, body } = item
+        return commentTemplate(item)
+      })
+
+      const result = comments.join('\n')
+
+      containerCommentsElement.innerHTML = result
     })
   }
+
+  // Способ через кнопку, сработает только при клике на кнопку внутри карточки
+  // if (target.tagName == 'BUTTON') {
+  //   const { id } = target.dataset
+
+  //   const url = `https://jsonplaceholder.typicode.com/posts/${id}/comments`
+
+  //   fetchData(url, 'GET', (response) => {
+  //     const data = JSON.parse(response)
+
+  //     const comments = data.map((item) => {
+  //       // const { name, email, body } = item
+  //       return commentTemplate(item)
+  //     })
+
+  //     const result = comments.join('\n')
+
+  //     containerCommentsElement.innerHTML = result
+  //   })
+  // }
 })
 
 
@@ -81,17 +104,27 @@ fetchData('https://jsonplaceholder.typicode.com/posts', 'GET', (response) => {
 
   const result = cards.join('\n')
 
-  containerElement.innerHTML = result
+  containerPostsElement.innerHTML = result
 })
 
 function cardTemplate (title, text, id) {
   return `
-    <a href="#" role="button" class="card" style="width: 25%" data-id="${id}">
+    <a href="#" role="button" class="card" style="width: 50%" data-id="${id}">
       <div class="card-body">
         <h5 class="card-title">${title}</h5>
         <p class="card-text mb-4">${text}</p>
         <button class="btn btn-primary" type="button" data-id="${id}">Comments</button>
       </div>
     </a>
+  `
+}
+
+function commentTemplate ({ name, email, body }) {
+  return `
+    <div class="list-group-item">
+      <div class="mb-3"><strong>${name}</strong> <a href="mailto:${email}">${email}</a></div>
+
+      <div>${body}</div>
+    </div>
   `
 }

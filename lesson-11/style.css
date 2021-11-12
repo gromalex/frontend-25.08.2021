@@ -1,0 +1,17 @@
+.widget {
+  max-width: 320px;
+  border-radius: 0.5rem;
+  margin: 0 auto;
+
+  overflow: hidden;
+}
+
+.widget-header {
+  padding: 1rem;
+  background-color: rgb(132, 174, 252);
+  color: white;
+}
+
+.description {
+  text-transform: capitalize;
+}
