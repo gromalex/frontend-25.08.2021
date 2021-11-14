@@ -55,32 +55,8 @@ function widgetHeaderTemplate (weatherData) {
   `
 }
 
-function widgetItemTemplate (weatherData) {
-  const { date, iconSrc, temp } = weatherData
-
-  return `
-    TODO: тут должен быть html item
-  `
-}
-
-function widgetBodyTemplate (days) {
-  // сюда передаем массив объектов (days), где каждый объект это погода
-  // перебираем days в цикле и получаем суммарный html всех items (уже делали в прошлом дз)
-
-  // возвращаем html
-  return `
-    <div class="widget-body">
-      TODO: тут все ваше items
-    </div>
-  `
-}
-
 function renderHeader (data) {
   widgetContainerElement.innerHTML = widgetHeaderTemplate(data)
-}
-
-function renderBody (data) {
-  widgetContainerElement.innerHTML += widgetBodyTemplate(data) // именно +=
 }
 
 // Запрос за данными для widget-header
@@ -101,6 +77,31 @@ fetchData(urlWetherCurrent, 'GET', (response) => {
 
 // Часть 2
 // Погода по дням, всего 40 объектов, вам надо взять каждый 8-й, т.е [8, 16, 24, 32, 40]
+
+function widgetItemTemplate (weatherData) {
+  const { date, iconSrc, temp } = weatherData
+
+  return `
+    TODO: тут должен быть html item
+  `
+}
+
+function widgetBodyTemplate (days) {
+  // сюда передаем массив объектов (days), где каждый объект это погода
+  // перебираем days в цикле и получаем суммарный html всех items (уже делали в прошлом дз)
+
+  // возвращаем html
+  return `
+    <div class="widget-body">
+      TODO: тут все ваше items
+    </div>
+  `
+}
+
+function renderBody (data) {
+  widgetContainerElement.innerHTML += widgetBodyTemplate(data) // именно +=
+}
+
 // Запрос за данными для widget-body
 fetchData(urlWetherByDays, 'GET', (response) => {
   // TODO: тут уже сами
