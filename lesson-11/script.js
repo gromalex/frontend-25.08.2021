@@ -93,7 +93,7 @@ function widgetBodyTemplate (days) {
   // возвращаем html
   return `
     <div class="widget-body">
-      TODO: тут все ваше items
+      TODO: тут все ваши items
     </div>
   `
 }
