@@ -12,6 +12,21 @@
   color: white;
 }
 
+.widget-body {
+
+}
+
+.widget-body__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: rgb(238, 238, 238);
+  border-bottom: 1px solid gray;
+
+  padding: 0.5rem 1rem;
+}
+
 .description {
   text-transform: capitalize;
 }

@@ -82,18 +82,28 @@ function widgetItemTemplate (weatherData) {
   const { date, iconSrc, temp } = weatherData
 
   return `
-    TODO: тут должен быть html item
+    <div class="widget-body__item">
+      <span>${date}</span>
+      <img src="${iconSrc}" alt="">
+      <span>${temp}</span>
+    </div>
   `
 }
 
 function widgetBodyTemplate (days) {
-  // сюда передаем массив объектов (days), где каждый объект это погода
-  // перебираем days в цикле и получаем суммарный html всех items (уже делали в прошлом дз)
+  const items = days.map((item) => {
+    const [date, iconId, temp] = [new Date(item.dt), item.weather[0].icon, item.main.temp]
+    const iconSrc = `http://openweathermap.org/img/wn/${iconId}@2x.png`
+
+    return widgetItemTemplate({ date, iconSrc, temp })
+  })
+
+  const itemsHTML = items.join(' ')
 
   // возвращаем html
   return `
     <div class="widget-body">
-      TODO: тут все ваши items
+      ${itemsHTML}
     </div>
   `
 }
@@ -104,5 +114,9 @@ function renderBody (data) {
 
 // Запрос за данными для widget-body
 fetchData(urlWetherByDays, 'GET', (response) => {
-  // TODO: тут уже сами
+  const data = JSON.parse(response).list
+
+  const resultData = data.filter((item, index) => index % 8 == 0)
+
+  renderBody(resultData)
 })
