@@ -132,7 +132,6 @@ function fetchData (url, method = 'GET') {
   })
 }
 
-
 fetchData('https://jsonplaceholder.typicode.com/posts')
   .then((response) => {
     const data = JSON.parse(response)
