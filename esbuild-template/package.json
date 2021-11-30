@@ -1,0 +1,17 @@
+{
+  "name": "esbuild-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node esbuilder.config.js",
+    "dev": "node esbuilder.config.watch.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.14.0",
+    "esbuild-plugin-sass": "^0.6.0"
+  }
+}
