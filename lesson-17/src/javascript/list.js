@@ -46,7 +46,15 @@ class List {
     const id = event.target.getAttribute('data-id')
 
     if (role == 'remove') {
-      this.data = this.data.filter((item) => item.id != id)
+      let removedItemIndex = 0
+
+      this.data.forEach((item, index) => {
+        if (item.id == id) {
+          removedItemIndex = index
+        }
+      })
+
+      this.data.splice(removedItemIndex, 1)
 
       this.render()
     }
@@ -152,6 +160,7 @@ class List {
   render () {
     const toDoElements = this.createToDoElements()
     this.listElement.innerHTML = toDoElements
+    this.isEdit = false
   }
 }
 

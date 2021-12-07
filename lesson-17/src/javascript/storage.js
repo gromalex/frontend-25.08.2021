@@ -16,6 +16,8 @@ class Storage {
   handleBeforeUnload () {
     const json = JSON.stringify(this.data)
     localStorage.setItem('data', json)
+    console.warn(this.data)
+    debugger
   }
 
   handleListReady () {
