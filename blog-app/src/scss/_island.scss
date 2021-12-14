@@ -5,10 +5,15 @@ $component: 'island';
   background-color: white;
 
   &__item {
+    position: relative;
     padding: 0.5rem 1rem;
 
     & + & {
       border-top: 1px solid rgb(224, 224, 224);
+    }
+
+    a.active {
+      color: rgb(241, 167, 81);
     }
   }
 }
