@@ -1,5 +1,6 @@
 import '../scss/app.scss'
 
+import bootstrap from 'bootstrap'
 // import { Modal } from 'bootstrap'
 // import './async-await'
 
