@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./dist/app.bundle.js" defer></script>
+  <style>
+    .validation-enabled.form:invalid button[type="submit"] {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .validation-enabled input:invalid {
+      border: 2px solid rgba(238, 49, 49, 0.623);
+    }
+
+    .error {
+      display: none;
+      color: red;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      background-color: rgba(238, 49, 49, 0.342);
+    }
+
+    .validation-enabled input:invalid + .error {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <form class="form" id="form" action="" style="width: 500px;" novalidate>
+    <div>
+      <input type="text" name="username" id="username" placeholder="Username" required minlength="2" maxlength="20">
+      <div class="error">Обязательное поле, количество символов 2-20</div>
+    </div>
+    <br>
+    <div><input type="email" name="email" id="email" placeholder="Email" required minlength="5" maxlength="20"></div>
+    <br>
+    <div>+<input type="number" name="phone" id="phone" placeholder="Phone" minlength="7" maxlength="20"></div>
+    <br>
+    <div><input type="number" name="age" id="age" placeholder="Age" min="12" max="100"></div>
+    <br>
+    <div><input type="password" name="password" id="password" placeholder="Password" required minlength="6" maxlength="20"></div>
+    <br>
+    <div><input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password" required minlength="6" maxlength="20"></div>
+    <br>
+    <button type="submit">Отправить</button>
+    <!-- <input type="submit" value="Отправить"> -->
+  </form>
+</body>
+</html>
