@@ -12,6 +12,8 @@ class DnD {
   constructor (element) {
     this.element = element
 
+    console.log('dnd')
+
     this.init()
   }
 

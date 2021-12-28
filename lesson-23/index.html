@@ -30,11 +30,48 @@
       height: 260px;
       background-color: aqua;
     }
+
+    .container {
+      position: relative;
+    }
+
+    .stick {
+      position: absolute;
+      box-sizing: border-box;
+
+      height: 240px;
+      width: 140px;
+      padding: 0.5rem;
+      background-color: rgb(243, 205, 205);
+    }
+
+    .stick__content {
+
+    }
+
+    .stick__form {
+      max-width: 100%;
+      display: none;
+    }
+
+    .stick.stick_edit .stick__content {
+      display: none;
+    }
+
+    .stick.stick_edit .stick__form {
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <div class="card" id="card">
+  <!-- <div class="card" id="card"> -->
     <!-- <div class="card__item" id="cardItem"></div> -->
+  <!-- </div> -->
+
+  <button id="createStickButton">Create Stick</button>
+
+  <div class="container" id="container">
+
   </div>
 
   <!-- <p style="height: 2000px;"></p> -->

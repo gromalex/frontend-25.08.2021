@@ -1,32 +1,58 @@
 import { DnD } from './dnd';
 
 class Card {
-  constructor (cards) {
-    this.cards = cards
+  data = {
+    id: new Date().getTime(),
+    content: 'Hello!',
+    position: {
+      top: 'auto',
+      left: 'auto'
+    }
   }
 
-  getTemplate ({ id, content, position }) {
-    // TODO: template
-    return `
-      <div class="card__content></div>
+  constructor (containerElement) {
+    this.cardElement = null
+    this.containerElement = containerElement
 
-      <form>
-        <textarea name="content"></textarea>
+    this.init()
+  }
+
+  init () {
+    this.handleDblClick = this.handleDblClick.bind(this)
+
+    this.render()
+  }
+
+  handleDblClick ({currentTarget}) {
+    currentTarget.classList.add('stick_edit')
+  }
+
+  // handleClickSaveEdit () {}
+
+  getTemplate () {
+    return `
+      <div class="stick__content">${this.data.content}</div>
+
+      <form class="stick__form">
+        <textarea name="content">${this.data.content}</textarea>
         <button>Save</button>
       </form>
     `
   }
 
   render () {
-    const cardElement = document.createElement('div')
-    cardElement.classList.add('card')
-    cardElement.setAttribute('id', '') // TODO:
+    this.cardElement = document.createElement('div')
+    this.cardElement.classList.add('stick')
+    // cardElement.setAttribute('id', '') // TODO:
 
-    new DnD(cardElement)
+    this.cardElement.addEventListener('dblclick', this.handleDblClick)
+    new DnD(this.cardElement)
 
     const template = this.getTemplate()
-    cardElement.innerHTML = template
+    this.cardElement.innerHTML = template
 
-    // body.append(cardElement)
+    this.containerElement.append(this.cardElement)
   }
 }
+
+export { Card }
